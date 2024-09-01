@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BORIS Observation Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+
+        .chart-box {
+            width: 45%;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BORIS Observation Dashboard</h1>
+        <p>This dashboard provides insights into behavior observations from the BORIS dataset. The charts below display the most common behaviors observed and the contribution of each observer to the overall dataset.</p>
+
+        <div class="chart-container">
+            <!-- Bar Chart for Behavior Counts -->
+            <div class="chart-box">
+                <canvas id="behaviorChart"></canvas>
+            </div>
+
+            <!-- Pie Chart for Observer Contributions -->
+            <div class="chart-box">
+                <canvas id="observerChart"></canvas>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Data visualized using Chart.js | Storytelling through observational insights</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Sample cleaned data
+        const cleanedData = [
+            { subject_id: 101, behavior: 'Feeding', duration: 80, observer: 'Alice' },
+            { subject_id: 102, behavior: 'Sleeping', duration: 120, observer: 'Bob' },
+            { subject_id: 103, behavior: 'Foraging', duration: 90, observer: 'Alice' },
+            { subject_id: 104, behavior: 'Aggression', duration: 25, observer: 'Bob' },
+            { subject_id: 105, behavior: 'Playing', duration: 30, observer: 'Chris' },
+            { subject_id: 106, behavior: 'Grooming', duration: 50, observer: 'Alice' },
+            { subject_id: 107, behavior: 'Exploring', duration: 65, observer: 'Chris' }
+        ];
+
+        // Prepare behavior data for bar chart
+        const behaviorCounts = cleanedData.reduce((acc, item) => {
+            acc[item.behavior] = (acc[item.behavior] || 0) + 1;
+            return acc;
+        }, {});
+
+        // Prepare observer data for pie chart
+        const observerCounts = cleanedData.reduce((acc, item) => {
+            acc[item.observer] = (acc[item.observer] || 0) + 1;
+            return acc;
+        }, {});
+
+        // Bar chart for behaviors
+        const behaviorChart = new Chart(document.getElementById('behaviorChart'), {
+            type: 'bar',
+            data: {
+                labels: Object.keys(behaviorCounts),
+                datasets: [{
+                    label: 'Behavior Count',
+                    data: Object.values(behaviorCounts),
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Pie chart for observer contributions
+        const observerChart = new Chart(document.getElementById('observerChart'), {
+            type: 'pie',
+            data: {
+                labels: Object.keys(observerCounts),
+                datasets: [{
+                    data: Object.values(observerCounts),
+                    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

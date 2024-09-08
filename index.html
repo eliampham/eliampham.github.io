@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Web App Hub</title>
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    /* Leaflet Map Container */
+    #map {
+      height: 400px;
+      width: 100%;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My Web App Hub</h1>
+  <p>Click the button below to launch the <strong>Prompt Manager</strong> web app:</p>
+  <button onclick="window.location.href='https://script.google.com/macros/s/AKfycbxY_a1ZFVg04uGqWy-qaBc4ik9S3sET-RQPsoPkzubDjjG4F9s43fLK7NF1-FK5c-O5Zw/exec';">Launch Prompt Manager</button>
+
+  <!-- Map Section -->
+  <h2>Interactive Map</h2>
+  <p>Below is an interactive map showcasing a location:</p>
+  <div id="map"></div> <!-- Map Container -->
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script>
+    // Initialize the map and set the initial view
+    var map = L.map('map').setView([51.505, -0.09], 13); // Coordinates of London
+
+    // Add a tile layer (from OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 19,
+    }).addTo(map);
+
+    // Add a marker with a popup
+    var marker = L.marker([43.664872087764465, -79.39934928651479]).addTo(map)
+      .bindPopup("<b>Hello!</b><br>This is iSchool, UoT.")
+      .openPopup();
+  </script>
+</body>
+</html>

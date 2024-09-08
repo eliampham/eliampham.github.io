@@ -1,0 +1,11 @@
+Timestamp,StudentID,Behavior,Duration (seconds),TechnologyUsed,ClassroomActivity
+2024-09-01 08:00,001,Engaged,30,New Tech,Lecture
+2024-09-01 08:05,002,Disengaged,15,Old Tech,Lecture
+2024-09-01 08:10,003,Engaged,25,New Tech,Group Work
+2024-09-01 08:15,004,Off-Task,10,New Tech,Group Work
+2024-09-01 08:20,001,Engaged,20,New Tech,Individual Work
+2024-09-01 08:25,002,Engaged,30,Old Tech,Individual Work
+2024-09-01 08:30,005,Disengaged,5,New Tech,Lecture
+2024-09-01 08:35,006,Engaged,35,Old Tech,Group Work
+2024-09-01 08:40,003,Off-Task,20,New Tech,Individual Work
+2024-09-01 08:45,004,Engaged,25,New Tech,Lecture

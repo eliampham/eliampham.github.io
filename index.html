@@ -45,15 +45,15 @@
   <button onclick="window.location.href='https://script.google.com/macros/s/AKfycbxY_a1ZFVg04uGqWy-qaBc4ik9S3sET-RQPsoPkzubDjjG4F9s43fLK7NF1-FK5c-O5Zw/exec';">Launch Prompt Manager</button>
 
   <!-- Map Section -->
-  <h2>Interactive Map</h2>
-  <p>Below is an interactive map showcasing a location:</p>
-  <div id="map"></div> <!-- Map Container -->
+  <!--<h2>Interactive Map</h2> -->
+  <!-- <p>Below is an interactive map showcasing a location:</p> -->
+  <!-- <div id="map"></div> --> <!-- Map Container -->
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <script>
     // Initialize the map and set the initial view
-    var map = L.map('map').setView([51.505, -0.09], 13); // Coordinates of London
+    var map = L.map('map').setView([43.664872087764465, -79.39934928651479], 13); // Coordinates of iSchool
 
     // Add a tile layer (from OpenStreetMap)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
